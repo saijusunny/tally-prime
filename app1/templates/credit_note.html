@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;color:#fff;width:100%;margin: auto;">
+                <div class="col "> Credit Note</div>
+            </div>
+            
+            <div class="ledger">
+
+                <form style="margin-top: 30px;">
+                    <div class="form-group">
+                        <label style="font-size: 18px;  margin-top: 10px;">Party Account Name:</label>
+                        <input type="text" class="input"  id="search" onkeyup="searchFun()"><br>
+                        <label style="font-size: 18px;  margin-top: 10px;">Current Balance:</label>
+                        <input type="text" class="input"  id="search" onkeyup="searchFun()"><br>
+                        <label style="font-size: 18px;  margin-top: 10px;">Ledger Account:</label>
+                        <input type="text" class="input"  id="search" onkeyup="searchFun()"><br>
+                        <label style="font-size: 18px;  margin-top: 10px;">Current Balance:</label>
+                        <input type="text" class="input"  id="search" onkeyup="searchFun()"><br>
+
+                      </div>
+
+                </form>
+
+
+
+            </div>
+            <hr>
+            <div class="box">
+                <div class="head px-3" style="margin-top: 5px;">Name Of Item</div>
+                
+                <hr>
+
+                <table id="myTable" class="tb">
+                    {% for i in ledger %}
+                        <tr class="tr" style="height: 20px;">
+                            <td>
+                                <a href="{% url 'account_books_ledger_show2' i.id %}">{{i.name}}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+
+
+                
+
+
+
+            </div>
+            
+            
+
+          
+              
+
+
+           
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
