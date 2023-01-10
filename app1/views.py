@@ -11485,8 +11485,43 @@ def indirect_expenses(request):
     return render(request,'indirect_expences.html',{'std':std,'stm':stm,'total':total,'total_d':total_d})
 
 # Credit Note
+# def credit_note(request):
+#     return render(request,'credit_note.html')
+
 def credit_note(request):
-    return render(request,'credit_note.html')
+    t_id = request.session['t_id']
+
+    cmp1 = Companies.objects.get(id=t_id)
+
+    item = stock_itemcreation.objects.all() 
+    context = {'cmp1': cmp1,'item':item} 
+    return render(request,'credit_note.html',context)
+
+
+def itemdata(request):
+    print("welcome")
+    if 't_id' in request.session:
+        if request.session.has_key('t_id'):
+            uid = request.session['t_id']
+        else:
+            return redirect('/')
+        cmp1 = Companies.objects.get(id=request.session['t_id'])
+        print(cmp1.state)
+        id = request.GET.get('id')
+        print("asdsadas")
+        print(id)
+        
+        
+        item = stock_itemcreation.objects.get(name=id)
+        print(item)
+        # hsn = item.hsn
+        qty = item.quantity
+        price = item.rate
+        # gst = item.intra_st
+        # sgst = item.inter_st
+        # places=cmp1.state
+        return JsonResponse({"status":" not",'qty':qty,'price':price})
+    return redirect('/')
 
     
     

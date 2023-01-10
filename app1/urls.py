@@ -770,7 +770,11 @@ urlpatterns = [
     path('indirect_exp',views.indirect_expenses,name='indirect_expenses'),
     path('stock_group2',views.stock_group2,name='stock_group2'),
     path('items_2/<int:pk>',views.items_2,name='items_2'),
+
+
+    #credit section
     path('credit_note/',views.credit_note,name='credit_note'),
+    path('itemdata/',views.itemdata,name='itemdata'),
               
                          
 
